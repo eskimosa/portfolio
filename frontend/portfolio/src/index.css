@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply transition-colors duration-200;
+}
+
+@import 'aos/dist/aos.css';
+@import '@fortawesome/fontawesome-free/css/all.min.css';

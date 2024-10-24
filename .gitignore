@@ -1,0 +1,4 @@
+*.DG_STORE
+*.idea
+*__pycache__
+*venv/
