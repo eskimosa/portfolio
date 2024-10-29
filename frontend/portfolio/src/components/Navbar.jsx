@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-
   return (
     <nav>
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

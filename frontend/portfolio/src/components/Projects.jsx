@@ -32,10 +32,10 @@ const Projects = () => {
     <section className="py-10">
       <div className="max-w-[1180px] mx-auto w-[90%]">
         <div className="text-center mb-8">
-          <h2 className="text-4xl dark:text-neutral-300 font-bold mb-4">
+          <h2 className="text-5xl dark:text-neutral-300 font-bold mb-4">
             Current Projects
           </h2>
-          <p className="text-sm dark:text-neutral-300 font-bold">
+          <p className="text-lg dark:text-neutral-300 font-bold">
             Skills grow. So will this portfolio.
           </p>
         </div>

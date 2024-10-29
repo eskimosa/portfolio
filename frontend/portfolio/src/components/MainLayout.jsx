@@ -26,7 +26,7 @@ const MainLayout = () => {
         <section>
           <Skills />
         </section>
-        <section>
+        <section id="projects">
             <Projects />
         </section>
 
