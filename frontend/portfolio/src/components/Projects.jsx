@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Import AOS styles
+import "aos/dist/aos.css";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
-  const [selectedVideo, setSelectedVideo] = useState(null); // To track the selected video
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
     AOS.init({
-      duration: 1500, // duration of animations
+      duration: 1500,
     });
   }, []);
 
@@ -19,7 +19,6 @@ const Projects = () => {
         const response = await axios.get("http://127.0.0.1:8000/projects/");
 
         if (response.status === 200) {
-          console.log(response.data);
           setProjects(response.data);
         }
       } catch (error) {
@@ -30,11 +29,11 @@ const Projects = () => {
   }, []);
 
   const handleVideoClick = (videoUrl) => {
-    setSelectedVideo(videoUrl); // Set the selected video URL
+    setSelectedVideo(videoUrl);
   };
 
   const closeVideo = () => {
-    setSelectedVideo(null); // Close the video
+    setSelectedVideo(null);
   };
 
   return (
@@ -42,8 +41,8 @@ const Projects = () => {
       <div className="max-w-[1180px] mx-auto w-[90%]">
         <div className="text-center mb-8">
           <h2 className="text-5xl dark:text-neutral-300 font-bold mb-4">
-          <span className="border-b-4 border-[#7e22ce]">
-            Current Projects
+            <span className="border-b-4 border-[#7e22ce]">
+              Current Projects
             </span>
           </h2>
           <p className="text-lg dark:text-neutral-300 font-bold">
@@ -135,7 +134,6 @@ const Projects = () => {
                 className="w-full h-full rounded-lg"
                 src={selectedVideo}
                 title="Project Video"
-                frameBorder="0"
                 allowFullScreen
               ></iframe>
             </div>
