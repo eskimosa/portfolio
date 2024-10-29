@@ -58,6 +58,10 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'ALLOW-FROM https://www.loom.com/'
+
+
 ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [

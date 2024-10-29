@@ -5,6 +5,7 @@ import "aos/dist/aos.css"; // Import AOS styles
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState(null); // To track the selected video
 
   useEffect(() => {
     AOS.init({
@@ -28,12 +29,22 @@ const Projects = () => {
     fetchProjects();
   }, []);
 
+  const handleVideoClick = (videoUrl) => {
+    setSelectedVideo(videoUrl); // Set the selected video URL
+  };
+
+  const closeVideo = () => {
+    setSelectedVideo(null); // Close the video
+  };
+
   return (
     <section className="py-10">
       <div className="max-w-[1180px] mx-auto w-[90%]">
         <div className="text-center mb-8">
           <h2 className="text-5xl dark:text-neutral-300 font-bold mb-4">
+          <span className="border-b-4 border-[#7e22ce]">
             Current Projects
+            </span>
           </h2>
           <p className="text-lg dark:text-neutral-300 font-bold">
             Skills grow. So will this portfolio.
@@ -65,17 +76,16 @@ const Projects = () => {
                 data-aos={index % 2 === 0 ? "zoom-in-left" : "zoom-in-right"}
                 data-aos-duration="1500"
               >
-                <h3 className="text-2xl dark:text-neutral-300 text-md tracking-wide leading-relaxed font-semibold mb-2">
+                <h3 className="text-3xl dark:text-neutral-300 text-md tracking-wide leading-relaxed font-semibold mb-2">
                   {project.title}
                 </h3>
                 <p className="my-0 dark:text-neutral-300 text-md tracking-wide leading-relaxed">
                   {project.description}
                 </p>
-                {/* Display Technologies */}
-                <h3 className="mt-4 text-lg font-semibold dark:text-neutral-300">
+                <h3 className="uppercase mt-4 text-lg font-semibold dark:text-neutral-300">
                   Made with:
                 </h3>
-                <div className="flex flex-wrap mt-2">
+                <div className="flex flex-wrap mt-2 space-x-4">
                   {project.technologies.split(",").map((tech, idx) => (
                     <i
                       key={idx}
@@ -83,10 +93,54 @@ const Projects = () => {
                     />
                   ))}
                 </div>
+
+                <div className="mt-4 flex items-center space-x-4">
+                  <span
+                    onClick={() => handleVideoClick(project.video_url)}
+                    className="uppercase font-semibold text-black dark:text-white border-b-4 border-transparent hover:border-[#7e22ce] cursor-pointer"
+                    title="Project Demo"
+                  >
+                    See it in action
+                  </span>
+
+                  <span className="uppercase font-semibold text-black dark:text-white border-b-4 border-transparent">
+                    |
+                  </span>
+
+                  <a
+                    href={project.github_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="uppercase font-semibold text-black dark:text-white border-b-4 border-transparent hover:border-[#7e22ce] cursor-pointer"
+                  >
+                    GitHub
+                  </a>
+                </div>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Video Modal */}
+        {selectedVideo && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+            <div className="relative w-full h-[80vh] bg-neutral-900 rounded-lg p-6 max-w-5xl">
+              <button
+                onClick={closeVideo}
+                className="absolute top-0 right-0 mt-2 mr-2 text-red-500 text-2xl"
+              >
+                &times;
+              </button>
+              <iframe
+                className="w-full h-full rounded-lg"
+                src={selectedVideo}
+                title="Project Video"
+                frameBorder="0"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

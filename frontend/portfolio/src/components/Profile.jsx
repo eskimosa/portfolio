@@ -12,7 +12,9 @@ const Profile = () => {
     <section className="my-10 overflow-x-hidden transition-colors duration-200">
     <div className="max-w-[1180px] mx-auto w-[90%]">
       <h1 className="text-4xl dark:text-neutral-300 font-bold text-center mb-4 font-sen">
+      <span className="border-b-4 border-[#7e22ce]">
         About Me
+        </span>
       </h1>
 
       <div className="flex flex-col md:flex-row items-stretch my-10 leading-[1.6] tracking-[1.5px] text-2xl">

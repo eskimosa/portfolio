@@ -5,7 +5,7 @@ const Skills = () => {
     <section className=" my-40 overflow-x-hidden transition-colors duration-200">
       <div className="max-w-[1180px] mx-auto w-[90%]">
         <h2 className="text-4xl dark:text-neutral-300 font-bold text-center mb-4 font-sen">
-          <span>Skills</span>
+          <span className="border-b-4 border-[#7e22ce]">Skills</span>
         </h2>
       </div>
       <ul className="flex flex-wrap my-[6%] mx-auto">
