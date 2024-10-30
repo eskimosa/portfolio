@@ -9,16 +9,16 @@ const Navbar = () => {
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
             <div className="md:ml-auto">
               <div className="flex space-x-2">
-              <a href="#home" className="dark:text-neutral-300 font-bold hover:bg-purple-700 hover:text-white rounded-md px-3 py-2">
+              <a href="#home" className="dark:text-neutral-300 font-bold border-b-4 border-transparent hover:border-[#7e22ce] cursor-pointer px-3 py-2">
                   Home
                 </a>
-                <a href="#about" className="dark:text-neutral-300 font-bold hover:bg-purple-700 hover:text-white rounded-md px-3 py-2">
+                <a href="#about" className="dark:text-neutral-300 font-bold border-b-4 border-transparent hover:border-[#7e22ce] cursor-pointer px-3 py-2">
                   About
                 </a>
-                <a href="#projects" className="dark:text-neutral-300 font-bold hover:bg-purple-700 hover:text-white rounded-md px-3 py-2">
+                <a href="#projects" className="dark:text-neutral-300 font-bold border-b-4 border-transparent hover:border-[#7e22ce] cursor-pointer px-3 py-2">
                   Projects
                 </a>
-                <a href="#contacts" className="dark:text-neutral-300 font-bold hover:bg-purple-700 hover:text-white rounded-md px-3 py-2">
+                <a href="#contacts" className="dark:text-neutral-300 font-bold border-b-4 border-transparent hover:border-[#7e22ce] cursor-pointer px-3 py-2">
                   Contacts
                 </a>
               </div>

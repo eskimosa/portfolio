@@ -45,8 +45,8 @@ const Projects = () => {
               Current Projects
             </span>
           </h2>
-          <p className="text-lg dark:text-neutral-300 font-bold">
-            Skills grow. So will this portfolio.
+          <p className="text-2xl dark:text-neutral-300 font-bold">
+            Skills in progress, portfolio in motion.
           </p>
         </div>
         <div className="flex flex-col">
@@ -88,7 +88,9 @@ const Projects = () => {
                   {project.technologies.split(",").map((tech, idx) => (
                     <i
                       key={idx}
-                      className={`devicon-${tech.trim()}-plain text-black dark:text-white text-3xl mx-2`}
+                      title={tech}
+                      className={`devicon-${tech.trim()}-plain text-black dark:text-white text-3xl mx-2`
+                    }
                     />
                   ))}
                 </div>

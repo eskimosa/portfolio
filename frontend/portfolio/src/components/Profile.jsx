@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -7,6 +7,15 @@ const Profile = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
+
+  const handleDownloadCV = () => {
+    const link = document.createElement("a");
+    link.href = "/assets/EvgeniaMelnikova_CV.pdf";
+    link.download = "EvgeniaMelnikova_CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section className="my-10 overflow-x-hidden transition-colors duration-200">
@@ -62,7 +71,7 @@ const Profile = () => {
 
             <div>
               {/* Socials Container */}
-              <ul className="flex justify-center dark:text-neutral-300 space-x-6">
+              <ul className="flex justify-center dark:text-neutral-300 space-x-10">
                 {/* GitHub */}
                 <li className="flex-basis-1/5 text-center">
                   <a
@@ -78,6 +87,9 @@ const Profile = () => {
                     >
                       <i className="fab fa-github"></i>
                     </span>
+                    <p className="text-xs font-light mt-0.5 leading-normal text-black dark:text-white">
+                      GitHub
+                    </p>
                   </a>
                 </li>
 
@@ -96,7 +108,29 @@ const Profile = () => {
                     >
                       <i className="fab fa-linkedin"></i>
                     </span>
+                    <p className="text-xs font-light mt-0.5 leading-normal text-black dark:text-white">
+                      LinkedIn
+                    </p>
                   </a>
+                </li>
+
+                {/* CV */}
+                <li className="flex-basis-1/5 text-center">
+                  <button
+                    onClick={handleDownloadCV}
+                    aria-hidden="true"
+                    title="Download Evgenia's CV"
+                  >
+                    <span
+                      className="text-4xl hover:scale-110 hover:text-[#7e22ce] transition-transform duration-300"
+                      tabIndex="0"
+                    >
+                      <i className="fas fa-file-alt"></i>
+                    </span>
+                    <p className="text-xs font-light mt-0.5 leading-normal text-black dark:text-white">
+                      Resume
+                    </p>
+                  </button>
                 </li>
               </ul>
             </div>

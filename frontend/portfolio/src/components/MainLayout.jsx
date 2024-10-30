@@ -21,15 +21,16 @@ const MainLayout = () => {
           <Home />
         </section>
         <section id="about">
+          <div className="h-[10vh]"></div>
           <Profile />
         </section>
         <section>
+          <div className="h-[10vh]"></div>
           <Skills />
         </section>
         <section id="projects">
-            <Projects />
+          <Projects />
         </section>
-
 
         <button
           className="absolute w-16 h-16 bottom-16 right-16 bg-neutral-900 dark:bg-white rounded-full text-white dark:text-black fonr-semibold"

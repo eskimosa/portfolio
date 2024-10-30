@@ -1,4 +1,5 @@
 import React from "react";
+import ApiIcon from '@mui/icons-material/Api';
 
 const Skills = () => {
   return (
@@ -18,8 +19,8 @@ const Skills = () => {
           </p>
         </li>
         <li className="basis-[23%] m-2 p-2 text-center">
-          <span className="text-6xl block hover:scale-110 transition-transform duration-300">
-            <i className="devicon-javascript-plain text-black dark:text-white"></i>
+          <span className="text-6xl block hover:scale-110 transition-transform duration-300 ">
+            <i className="devicon-javascript-plain text-black dark:text-white "></i>
           </span>
           <p className="text-sm font-light mt-0.5 leading-normal text-black dark:text-white">
             JAVASCRIPT
@@ -107,6 +108,14 @@ const Skills = () => {
         </li>
         <li className="basis-[23%] m-2 p-2 text-center">
           <span className="text-6xl block hover:scale-110 transition-transform duration-300">
+            <i className="devicon-tailwindcss-plain text-black dark:text-white"></i>
+          </span>
+          <p className="text-sm font-light mt-0.5 leading-normal text-black dark:text-white">
+            TALWINDCSS
+          </p>
+        </li>
+        <li className="basis-[23%] m-2 p-2 text-center">
+          <span className="text-6xl block hover:scale-110 transition-transform duration-300">
             <i className="devicon-amazonwebservices-plain text-black dark:text-white"></i>
           </span>
           <p className="text-sm font-light mt-0.5 leading-normal text-black dark:text-white">
@@ -124,9 +133,17 @@ const Skills = () => {
         </li>
         <li className="basis-[23%] m-2 p-2 text-center">
           <span className="text-6xl block hover:scale-110 transition-transform duration-300 ">
+          <i className="devicon-postgresql-plain text-black dark:text-white"></i>
+          </span>
+          <p className="text-sm font-light mt-2 leading-normal text-black dark:text-white">
+            POSTGRESQL
+          </p>
+        </li>
+        <li className="basis-[23%] m-2 p-2 text-center">
+          <span className="text-6xl block hover:scale-110 transition-transform duration-300 ">
             <i className="fas fa-database text-black dark:text-white"></i>
           </span>
-          <p className="text-sm font-light mt-0.5 leading-normal text-black dark:text-white">
+          <p className="text-sm font-light mt-2 leading-normal text-black dark:text-white">
             REST APIs
           </p>
         </li>
