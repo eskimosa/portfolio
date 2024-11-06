@@ -1,0 +1,31 @@
+# Stage 1: Build the React application
+FROM node:18-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and yarn.lock
+COPY ./frontend/portfolio/package.json ./frontend/portfolio/yarn.lock ./
+
+# Install dependencies
+RUN yarn install
+
+# Copy the rest of the frontend code
+COPY ./frontend/portfolio .
+
+# Build the React app
+EXPOSE 3000
+
+CMD ["yarn", "start"]
+
+# Stage 2: Serve the React application with Nginx
+FROM nginx:alpine
+
+COPY --from=build /app/build /usr/share/nginx/html
+
+# COPY ./compose/production/nginx/nginx.http.conf /etc/nginx/nginx.http.conf
+# COPY ./compose/production/nginx/nginx.https.conf /etc/nginx/nginx.https.conf
+
+COPY ./compose/production/nginx/entrypoint.sh /app/nginx_entrypoint.sh
+RUN chmod +x /app/nginx_entrypoint.sh
+RUN ls -la /app/nginx_entrypoint.sh

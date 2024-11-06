@@ -1,0 +1,20 @@
+# Use Node.js image
+FROM node:18-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and yarn.lock
+COPY ../frontend/portfolio/package.json ./frontend/portfolio/yarn.lock ./
+
+# Install dependencies
+RUN yarn install
+
+# Copy the rest of the frontend code
+COPY ../frontend/portfolio .
+
+# Build the React app
+EXPOSE 3000
+
+CMD ["yarn", "start"]
+

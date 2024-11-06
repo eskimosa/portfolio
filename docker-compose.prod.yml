@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: compose/prod/Dockerfile_backend
+    command: gunicorn --bind 0.0.0.0:8000 post_publisher.wsgi:application
+    volumes:
+      - ./backend:/app
+      - ./backend/db.sqlite3:/app/db.sqlite3
+      - portfolio_static_volume:/app/staticfiles
+      - portfolio_media_volume:/app/media
+    env_file:
+      - .env_api
+    environment:
+      - DEBUG=0
+    ports:
+      - "8000:8000"
+    networks:
+      - backend_network
+
+
+  frontend:
+    build:
+      context: .
+      dockerfile: compose/prod/Dockerfile_frontend
+    volumes:
+      - ./frontend/portfolio:/app
+      - portfolio_static_volume:/app/staticfiles
+      - portfolio_media_volume:/app/media
+    ports:
+      - "3000:3000"
+
+volumes:
+  portfolio_static_volume:
+  portfolio_media_volume:
+
+networks:
+  backend_network:
+    driver: bridge
