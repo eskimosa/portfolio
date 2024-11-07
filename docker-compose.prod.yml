@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: compose/prod/Dockerfile_backend
-    command: gunicorn --bind 0.0.0.0:8000 post_publisher.wsgi:application
+    command: gunicorn --bind 0.0.0.0:8000 backend.wsgi:application
     volumes:
       - ./backend:/app
       - ./backend/db.sqlite3:/app/db.sqlite3
@@ -25,17 +25,45 @@ services:
     build:
       context: .
       dockerfile: compose/prod/Dockerfile_frontend
+    entrypoint: /bin/sh /app/entrypoint.sh
+    ports:
+      - "80:80"
+      - "443:443"
+    expose:
+      - "80"
+      - "443"
     volumes:
+      - ./letsencrypt:/etc/letsencrypt
+      - ./nginx_certbot_challenges:/var/www/certbot
       - ./frontend/portfolio:/app
       - portfolio_static_volume:/app/staticfiles
       - portfolio_media_volume:/app/media
-    ports:
-      - "3000:3000"
+    networks:
+      - backend_network
+    depends_on:
+      - backend
 
-volumes:
-  portfolio_static_volume:
-  portfolio_media_volume:
+  certbot:
+    build:
+      context: .
+      dockerfile: ./compose/prod/certbot/Dockerfile
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
+      - ./nginx_certbot_challenges:/var/www/certbot
+      - /var/run/docker.sock:/var/run/docker.sock
+    entrypoint: /bin/sh -c "/usr/local/bin/cert_negotiation.sh"
+    depends_on:
+      - backend
+      - frontend
+    restart: unless-stopped
 
 networks:
   backend_network:
     driver: bridge
+
+
+volumes:
+  letsencrypt: # Stores Let's Encrypt SSL certificates
+  nginx_certbot_challenges: # For the ACME challenge files
+  portfolio_static_volume:
+  portfolio_media_volume:
