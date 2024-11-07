@@ -65,12 +65,8 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = os.environ.get(
-    'CSRF_TRUSTED_ORIGINS',
-    [
-        'http://localhost:3000',
-        'https://jeniaincodeland.com'
-    ]
-)
+    'CSRF_TRUSTED_ORIGINS', 'https://jeniaincodeland.com').split(',')
+
 
 CORS_ALLOWED_ORIGINS = os.environ.get('DJANGO_CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
 
